@@ -1,0 +1,184 @@
+<!-- /*
+🔧 CSS Selectors Overview:
+
+1️⃣ Universal Selector:
+   - Selects all elements.
+   Example:
+     * {
+         margin: 0;
+         padding: 0;
+     }
+
+2️⃣ Type Selector (Element Selector):
+   - Selects all elements of a specific type.
+   Example:
+     p {
+         color: blue;
+     }
+
+3️⃣ Class Selector:
+   - Selects elements with a specific class attribute.
+   Example:
+     .my-class {
+         font-size: 18px;
+     }
+
+4️⃣ ID Selector:
+   - Selects a single element with a specific ID.
+   Example:
+     #my-id {
+         background-color: yellow;
+     }
+
+5️⃣ Grouping Selector:
+   - Applies same style to multiple selectors.
+   Example:
+     h1, h2, p {
+         font-family: Arial, sans-serif;
+     }
+
+6️⃣ Descendant Selector:
+   - Selects elements inside other elements.
+   Example:
+     div p {
+         color: green;
+     }
+
+7️⃣ Child Selector (>):
+   - Selects direct child elements.
+   Example:
+     div > p {
+         margin: 10px;
+     }
+
+8️⃣ Adjacent Sibling Selector (+):
+   - Selects element immediately after another.
+   Example:
+     h1 + p {
+         font-weight: bold;
+     }
+
+9️⃣ General Sibling Selector (~):
+   - Selects all siblings after an element.
+   Example:
+     h1 ~ p {
+         color: gray;
+     }
+
+🔟 Attribute Selector:
+   - Selects elements with a specific attribute.
+   Example:
+     input[type="text"] {
+         border: 1px solid #ccc;
+     }
+
+1️⃣1️⃣ Pseudo-class Selector:
+   - Selects elements in a specific state.
+   Example:
+     a:hover {
+         color: red;
+     }
+
+1️⃣2️⃣ Pseudo-element Selector:
+   - Selects a part of an element.
+   Example:
+     p::first-line {
+         font-weight: bold;
+     }
+
+⚡ Notes:
+- Combine selectors for advanced targeting.
+- Useful for responsive design and interactivity.
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Demo</title>
+
+    <style>
+        /* Universal Selector */
+        * {
+            border: 2px dashed rgba(43, 165, 226, 0.6);
+            padding: 5px;
+            margin: 5px;
+        }
+
+        /* Descendant Selector */
+        section * {
+            font-family: cursive;
+            font-size: 24px;
+            color: black;
+        }
+
+        /* Class Selector */
+        .text {
+            color: chocolate;
+        }
+
+        .one {
+            color: blue;
+        }
+
+        .two {
+            font-family: monospace;
+        }
+
+        .three {
+            font-size: large;
+        }
+
+        /* ID Selector */
+        #one {
+            color: rgb(80, 53, 198);
+        }
+
+        /* Element inside another element */
+        div p {
+            color: rgb(150, 127, 255);
+        }
+
+        /* Attribute Selector */
+        a[href="one"] {
+            color: orange;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        img[alt="nature"] {
+            width: 300px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="one">Heading with Class "one"</h1>
+    <h2 class="two">Heading with Class "two"</h2>
+    <h3 class="three">Heading with Class "three"</h3>
+
+    <p id="one">Paragraph with ID "one"</p>
+
+    <section>
+        <h1>Inside Section - Styling via Descendant Selector</h1>
+        <div class="text">Text inside a div with class "text"</div>
+    </section>
+
+    <div>
+        <p>Paragraph inside div (Styled by "div p" selector)</p>
+        <h1>Heading inside div</h1>
+    </div>
+
+    <a href="one">Link with href="one" (Attribute Selector)</a>
+
+    <img src="https://images.pexels.com/photos/13157845/pexels-photo-13157845.jpeg" alt="nature">
+
+</body>
+
+</html>

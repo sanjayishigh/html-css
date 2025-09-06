@@ -1,0 +1,104 @@
+<!-- /*
+🎨 CSS Filter Effects:
+
+1️⃣ blur():
+   - Applies a Gaussian blur to the element.
+   Example:
+     filter: blur(5px);
+
+2️⃣ brightness():
+   - Adjusts the brightness of the element.
+   Example:
+     filter: brightness(150%);   /* 100% = original brightness */
+
+3️⃣ contrast():
+   - Adjusts the contrast of the element.
+   Example:
+     filter: contrast(200%);     /* 100% = original contrast */
+
+4️⃣ grayscale():
+   - Converts the element to grayscale.
+   Example:
+     filter: grayscale(100%);    /* 0% = original color, 100% = fully grayscale */
+
+5️⃣ invert():
+   - Inverts the colors of the element.
+   Example:
+     filter: invert(100%);       /* 0% = normal, 100% = fully inverted */
+
+6️⃣ opacity():
+   - Sets the transparency level of the element.
+   Example:
+     filter: opacity(50%);       /* 0% = fully transparent, 100% = fully opaque */
+
+7️⃣ saturate():
+   - Adjusts color saturation.
+   Example:
+     filter: saturate(200%);     /* 100% = original saturation */
+
+8️⃣ sepia():
+   - Applies a sepia tone to the element.
+   Example:
+     filter: sepia(100%);
+
+🔟 Multiple Filters Combined:
+   Example:
+     filter: grayscale(50%) blur(3px) brightness(120%);
+
+⚡ Notes:
+- Applied using `filter` or `backdrop-filter`.
+- Great for image effects, hover animations, etc.
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Filters Demo</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .filtered-background {
+            position: relative;
+            height: 100vh;
+            background-image: url('https://images.pexels.com/photos/1983037/pexels-photo-1983037.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            filter: blur(5px) brightness(50%);
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="filtered-background"></div>
+
+    <div class="overlay-text">
+        🎨 Example of CSS Filters: <br>
+        Blur + Brightness
+    </div>
+
+</body>
+
+</html>

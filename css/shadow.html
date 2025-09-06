@@ -1,0 +1,76 @@
+<!-- /*
+🔧 CSS Shadows Overview:
+
+1️⃣ box-shadow:
+   - Adds shadow effects around elements (blocks).
+   - Syntax: box-shadow: offset-x offset-y blur-radius spread-radius color;
+
+2️⃣ text-shadow:
+   - Adds shadow to text content.
+   - Syntax: text-shadow: offset-x offset-y blur-radius color;
+
+3️⃣ Example Effects:
+   - Soft shadow: subtle visual depth.
+   - Hard shadow: sharp distinct shadow.
+
+⚡ Example:
+   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Shadows Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px;
+        }
+
+        .box {
+            width: 200px;
+            height: 150px;
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+
+            /* Example of box shadow - x y blurness color*/
+            box-shadow: 8px 8px 25px red;
+        }
+
+        .text {
+            font-size: 2rem;
+            color: #333;
+
+            /* Example of text shadow */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🌟 CSS Shadows Demo</h1>
+
+    <div class="box">
+        Box with Shadow
+    </div>
+
+    <div class="text">
+        Text with Shadow
+    </div>
+
+</body>
+
+</html>

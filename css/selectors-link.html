@@ -1,0 +1,142 @@
+<!-- /*
+🔗 CSS Link Pseudo-classes:
+
+1️⃣ :link
+   - Selects all unvisited links.
+   Example:
+     a:link {
+         color: blue;
+     }
+
+2️⃣ :visited
+   - Selects links that have been visited by the user.
+   Example:
+     a:visited {
+         color: purple;
+     }
+
+3️⃣ :hover
+   - Selects links (or any element) when the mouse is over them.
+   Example:
+     a:hover {
+         color: red;
+     }
+
+4️⃣ :active
+   - Selects links (or any element) when they are being clicked.
+   Example:
+     a:active {
+         color: orange;
+     }
+
+⚡ Common Usage Order:
+   a:link, a:visited, a:hover, a:active
+   (LoVe HAte mnemonic)
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Demo</title>
+
+    <style>
+        /* Type Selector */
+        p {
+            color: blue;
+        }
+
+        /* Class Selector */
+        .special {
+            font-weight: bold;
+            color: green;
+        }
+
+        /* ID Selector */
+        #unique {
+            background-color: yellow;
+            padding: 10px;
+        }
+
+        /* Grouping Selector */
+        h1, h2 {
+            font-family: Arial, sans-serif;
+            color: darkred;
+        }
+
+        /* Descendant Selector */
+        .container p {
+            border: 1px solid gray;
+            padding: 5px;
+        }
+
+        /* Child Selector */
+        .parent > p {
+            color: purple;
+        }
+
+        /* Adjacent Sibling Selector */
+        h1 + p {
+            font-style: italic;
+        }
+
+        /* General Sibling Selector */
+        h1 ~ p {
+            text-decoration: underline;
+        }
+
+        /* Attribute Selector */
+        input[type="text"] {
+            border: 2px solid green;
+            padding: 5px;
+        }
+
+        /* Pseudo-class Selector */
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+        /* Pseudo-element Selector */
+        p::first-line {
+            font-weight: bold;
+            color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Selectors Demo</h1>
+
+    <p>This paragraph is selected by the type selector (p).</p>
+
+    <p class="special">This paragraph uses the class selector (.special).</p>
+
+    <p id="unique">This paragraph uses the ID selector (#unique).</p>
+
+    <h2>Grouped Selector Example</h2>
+
+    <div class="container">
+        <p>This paragraph is a descendant of a container.</p>
+    </div>
+
+    <div class="parent">
+        <p>This paragraph is a direct child of .parent.</p>
+    </div>
+
+    <h1>Adjacent Sibling Selector Example</h1>
+    <p>This paragraph is immediately after an h1 (h1 + p).</p>
+
+    <h1>General Sibling Selector Example</h1>
+    <p>This paragraph is a general sibling of an h1 (h1 ~ p).</p>
+
+    <input type="text" placeholder="Attribute Selector Example">
+
+    <p><a href="#">Hover over this link to see pseudo-class effect</a></p>
+
+    <p>This paragraph shows the pseudo-element effect (first line bold).</p>
+</body>
+
+</html>

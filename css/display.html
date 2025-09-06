@@ -1,0 +1,166 @@
+<!-- /*
+📦 CSS Display Property Overview:
+
+1️⃣ display: block;
+   - Element takes full width, starts on a new line.
+   Example:
+     div {
+         display: block;
+     }
+
+2️⃣ display: inline;
+   - Element flows with text, does not start on a new line.
+   Example:
+     span {
+         display: inline;
+     }
+
+3️⃣ display: inline-block;
+   - Behaves like inline, but you can set width & height.
+   Example:
+     button {
+         display: inline-block;
+         width: 100px;
+         height: 40px;
+     }
+
+4️⃣ display: none;
+   - Hides the element (removes from layout).
+   Example:
+     .hidden {
+         display: none;
+     }
+
+5️⃣ display: flex;
+   - Enables Flexbox layout for easy alignment and distribution.
+   Example:
+     .container {
+         display: flex;
+     }
+
+6️⃣ display: grid;
+   - Enables CSS Grid layout for 2D layout control.
+   Example:
+     .grid-container {
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr;
+     }
+
+7️⃣ display: inline-flex;
+   - Like flex, but behaves as inline element.
+   Example:
+     .inline-flex-box {
+         display: inline-flex;
+     }
+
+⚡ Notes:
+- block vs inline: block takes full width, inline does not.
+- flex & grid are powerful layout models for responsive design.
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display Properties Demo</title>
+
+    <style>
+        /* Block display: Takes full width, starts on a new line */
+        .display-block {
+            display: block;
+            background-color: #add8e6;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Inline display: Flows with text, width/height ignored */
+        .display-inline {
+            display: inline;
+            background-color: #90ee90;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        /* Inline-block: Inline behavior but accepts width/height */
+        .display-inline-block {
+            display: inline-block;
+            background-color: #ffb6c1;
+            padding: 10px;
+            width: 150px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        /* Flex display: Flex container with items aligned in row */
+        .display-flex {
+            display: flex;
+            justify-content: space-around;
+            background-color: #eee;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .display-flex div {
+            background-color: #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Grid display: Grid container with 2 columns */
+        .display-grid {
+            display: grid;
+            grid-template-columns: 1fr ;
+            gap: 10px;
+            background-color: #ddd;
+            padding: 10px;
+        }
+
+        .display-grid div {
+            background-color: #bbb;
+            padding: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>CSS Display Properties Demo</h1>
+
+    <div class="display-block">
+        📦 Display: block (Full width, starts on a new line)
+    </div>
+
+    <span class="display-inline">
+        🔸 Display: inline (Flows with text)
+    </span>
+    <span class="display-inline">
+        🔸 Another inline element
+    </span>
+
+    <div class="display-inline-block">
+        🎯 Display: inline-block (Width, height apply)
+    </div>
+    <div class="display-inline-block">
+        🎯 Another inline-block element
+    </div>
+
+    <div class="display-flex">
+        ⚡ Display: flex container
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+    </div>
+
+    <div class="display-grid">
+        🌐 Display: grid container
+        <div>Grid Item 1</div>
+        <div>Grid Item 2</div>
+        <div>Grid Item 3</div>
+        <div>Grid Item 4</div>
+    </div>
+</body>
+
+</html>

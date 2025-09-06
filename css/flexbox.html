@@ -1,0 +1,198 @@
+<!-- /*
+🤸 CSS Flexbox Layout:
+
+1️⃣ The Flex Container
+   - To activate Flexbox, set the display property of a container element to `flex`.
+   - This makes its direct children "flex items".
+   Example:
+     .container {
+       display: flex;
+     }
+
+2️⃣ Main Axis (`justify-content`)
+   - Aligns items horizontally along the main axis (the row).
+   - Values: `flex-start`, `center`, `flex-end`, `space-between`, `space-around`.
+   Example:
+     .container {
+       justify-content: space-between; /* Items are evenly distributed */
+     }
+
+3️⃣ Cross Axis (`align-items`)
+   - Aligns items vertically along the cross axis (the column).
+   - Values: `flex-start`, `center`, `flex-end`, `stretch`.
+   Example:
+     .container {
+       align-items: center; /* Centers items vertically */
+     }
+
+4️⃣ Direction (`flex-direction`)
+   - Changes the direction of the main axis from horizontal to vertical.
+   - Values: `row` (default), `column`.
+   Example:
+     .container {
+       flex-direction: column; /* Stacks items vertically */
+     }
+
+5️⃣ Flex Items (`flex` property)
+   - A property for child items that controls how they grow and shrink.
+   - `flex: 1;` is a common shorthand to make items share space equally.
+   Example:
+     .item {
+       flex: 1; /* The item will grow to fill available space */
+     }
+
+⚡ Key Concept:
+   `justify-content` aligns along the main axis, and `align-items` aligns
+   along the cross axis. When you set `flex-direction: column`, the main
+   and cross axes swap.
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSS Flexbox Demo</title>
+    
+
+    <style>
+        body {
+            font-family: cursive;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 2rem;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #1a253c;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- Flexbox Demonstration --- */
+        
+        .flex-container {
+            display: flex; /* This is what activates Flexbox! */
+            background-color: #e7f3ff;
+            border: 2px solid #bce0ff;
+            border-radius: 8px;
+            padding: 1rem;
+            min-height: 120px;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .flex-item {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Example 2: justify-content */
+        .justify-center {
+            justify-content: center;
+        }
+
+        /* Example 3: align-items */
+        .align-center {
+            align-items: center;
+        }
+        
+        /* Example 4: flex-direction */
+        .direction-column {
+            flex-direction: column;
+            min-height: 250px;
+        }
+
+        /* Example 5: flex-grow on items */
+        .item-grow-1 {
+            flex: 1; /* Takes up 1 "share" of the extra space */
+        }
+        .item-grow-2 {
+            flex: 2; /* Takes up 2 "shares" of the extra space */
+        }
+
+        .order-items{
+            /* align-items: center; */
+            flex-flow: column wrap;
+            min-height: 250px;
+        }
+
+        .special{
+            order: 1;
+            align-self:center;
+            flex-basis: 100px;
+            /* flex-grow: 1; */
+            flex-shrink: 4;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <main class="main-container">
+        <h1>CSS Flexbox Demo</h1>
+
+        <h2>1. Default `display: flex`</h2>
+        <div class="flex-container">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+
+        <h2>2. `justify-content: center`</h2>
+        <div class="flex-container justify-center">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+        
+        <h2>3. `align-items: center`</h2>
+        <div class="flex-container align-center">
+            <div class="flex-item">1</div>
+            <div class="flex-item" style="padding: 2rem 1.5rem;">2 (Taller)</div>
+            <div class="flex-item">3</div>
+        </div>
+        
+        <h2>4. `flex-direction: column`</h2>
+        <div class="flex-container direction-column">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+        
+        <h2>5. `flex` property on items</h2>
+        <div class="flex-container">
+            <div class="flex-item item-grow-1">Flex: 1</div>
+            <div class="flex-item item-grow-2">Flex: 2</div>
+            <div class="flex-item item-grow-1">Flex: 1</div>
+        </div>
+
+        <h2>3. `order-items`</h2>
+        <div class="flex-container order-items">
+            <div class="flex-item">1</div>
+            <div class="flex-item special" style="padding: 2rem 1.5rem;">2 (Taller)</div>
+            <div class="flex-item special" style="padding: 2rem 1.5rem;">2 (Taller)</div>
+            <div class="flex-item special" style="padding: 2rem 1.5rem;">2 (Taller)</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">3</div>
+        </div>
+    </main>
+
+</body>
+</html>

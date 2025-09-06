@@ -1,0 +1,181 @@
+<!-- /*
+CSS Box Model Properties:
+
+1️⃣ width & height:
+   - Sets the width and height of an element.
+   Example:
+     width: 300px;
+     height: 150px;
+
+2️⃣ padding:
+   - Space between content and border.
+   Example:
+     padding: 20px;
+     padding: 10px 15px;  /* top-bottom 10px, left-right 15px */
+
+3️⃣ border:
+   - Defines the border around the element.
+   Example:
+     border: 2px solid black;
+     border-radius: 10px;  /* Rounded corners */
+
+4️⃣ margin:
+   - Space outside the element’s border.
+   Example:
+     margin: 30px;
+     margin: 10px auto;  /* Center horizontally with auto */
+
+5️⃣ box-sizing:
+   - Controls how width and height are calculated.
+   Values:
+     content-box (default) → width = content only
+     border-box → width includes padding & border
+   Example:
+     box-sizing: border-box;
+
+6️⃣ display:
+   - Controls how the element is displayed.
+   Values:
+     block, inline, inline-block, flex, grid, none
+   Example:
+     display: block;
+     display: flex;
+
+7️⃣ overflow:
+   - Controls content overflow behavior.
+   Values:
+     visible (default), hidden, scroll, auto
+   Example:
+     overflow: hidden;
+
+📐 Visual Hierarchy:
+[ margin ]
+   [ border ]
+      [ padding ]
+         [ content ]
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Simple box with borders */
+        .box {
+            border-left: 2px dotted teal;
+            border-bottom: 2px solid black;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 200px;
+        }
+
+        /* Paragraph showing padding, border, background, height */
+        .box-with-background {
+            height: 300px;
+            border: 4px solid black;
+            padding: 40px;
+            background-image: url('https://images.pexels.com/photos/13157845/pexels-photo-13157845.jpeg');
+            background-repeat: repeat-x;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* Styled long list */
+        ul {
+            list-style-type: disc;
+            max-height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        ul li {
+            padding: 5px;
+            margin-bottom: 5px;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Box Model Demo</h1>
+
+    <div class="box">
+        📦 Simple Box with Borders and Padding
+    </div>
+
+    <p class="box-with-background">
+        🎨 Paragraph demonstrating padding, borders, background image, and fixed background behavior.
+    </p>
+
+    <h2>Scrollable List Example</h2>
+    <ul>
+        <!-- Generate 50 list items using a loop or manually -->
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+        <li>Item 7</li>
+        <li>Item 8</li>
+        <li>Item 9</li>
+        <li>Item 10</li>
+        <li>Item 11</li>
+        <li>Item 12</li>
+        <li>Item 13</li>
+        <li>Item 14</li>
+        <li>Item 15</li>
+        <li>Item 16</li>
+        <li>Item 17</li>
+        <li>Item 18</li>
+        <li>Item 19</li>
+        <li>Item 20</li>
+        <li>Item 21</li>
+        <li>Item 22</li>
+        <li>Item 23</li>
+        <li>Item 24</li>
+        <li>Item 25</li>
+        <li>Item 26</li>
+        <li>Item 27</li>
+        <li>Item 28</li>
+        <li>Item 29</li>
+        <li>Item 30</li>
+        <li>Item 31</li>
+        <li>Item 32</li>
+        <li>Item 33</li>
+        <li>Item 34</li>
+        <li>Item 35</li>
+        <li>Item 36</li>
+        <li>Item 37</li>
+        <li>Item 38</li>
+        <li>Item 39</li>
+        <li>Item 40</li>
+        <li>Item 41</li>
+        <li>Item 42</li>
+        <li>Item 43</li>
+        <li>Item 44</li>
+        <li>Item 45</li>
+        <li>Item 46</li>
+        <li>Item 47</li>
+        <li>Item 48</li>
+        <li>Item 49</li>
+        <li>Item 50</li>
+    </ul>
+
+</body>
+
+</html>

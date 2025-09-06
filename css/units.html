@@ -1,0 +1,109 @@
+<!-- 
+CSS Length Units:
+
+1️⃣ Absolute Length Units:
+   - Fixed and not relative to other elements.
+   - Example Units:
+     - px    → Pixels
+     - cm    → Centimeters
+     - mm    → Millimeters
+     - in    → Inches
+     - pt    → Points (1pt = 1/72 inch)
+     - pc    → Picas (1pc = 12pt)
+   
+2️⃣ Relative Length Units:
+   - Relative to other elements (like viewport, parent element, font size).
+   - Example Units:
+     - %     → Percentage (of parent element)
+     - em    → Relative to font-size of element
+     - rem   → Relative to font-size of root element
+     - vw    → 1% of viewport width
+     - vh    → 1% of viewport height
+     - vmin  → Smaller of vw and vh
+     - vmax  → Larger of vw and vh
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units Demo</title>
+
+    <style>
+        html {
+            font-size: 16px;
+            font-family: monospace;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        section {
+            width: 300px; /* Slightly wider for alignment */
+            min-height: 300px;
+            background-color: aquamarine;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        div {
+            width: 50%; /* Relative to parent section */
+            height: 50px;
+            background-color: chartreuse;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .div2 {
+            width: 20vw;
+            height: 50vh;
+            background-color: lightcoral;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🌐 CSS Units Demo</h1>
+
+    <section>
+        <div>
+            📐 This box is 50% of section width
+        </div>
+
+        <p>Example of font size using <strong>em</strong> units</p>
+
+        <div class="div2">
+            📏 20vw width × 50vh height Box
+        </div>
+    </section>
+
+</body>
+
+</html>
+

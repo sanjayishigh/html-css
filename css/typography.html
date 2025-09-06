@@ -1,0 +1,155 @@
+<!-- 
+CSS Typography Properties:
+
+1️⃣ font-family:
+   - Specifies the font type for text.
+   Example:
+     font-family: Arial, sans-serif;
+
+2️⃣ font-size:
+   - Sets the size of the text.
+   Example:
+     font-size: 16px;
+     font-size: 1.2em;
+     font-size: 120%;
+
+3️⃣ font-weight:
+   - Defines the thickness of text.
+   Common values:
+     normal, bold, lighter, bolder, 100, 200, ..., 900
+   Example:
+     font-weight: bold;
+     font-weight: 400;
+
+4️⃣ font-style:
+   - Specifies italic or normal style.
+   Values:
+     normal, italic, oblique
+   Example:
+     font-style: italic;
+
+5️⃣ line-height:
+   - Controls the space between lines of text.
+   Example:
+     line-height: 1.5;
+     line-height: 20px;
+
+6️⃣ text-align:
+   - Aligns the text horizontally.
+   Values:
+     left, right, center, justify
+   Example:
+     text-align: center;
+
+7️⃣ text-decoration:
+   - Adds decorations to text.
+   Values:
+     none, underline, overline, line-through
+   Example:
+     text-decoration: underline;
+
+8️⃣ letter-spacing:
+   - Controls space between characters.
+   Example:
+     letter-spacing: 2px;
+
+9️⃣ word-spacing:
+   - Controls space between words.
+   Example:
+     word-spacing: 5px;
+
+🔟 text-transform:
+   - Controls text casing.
+   Values:
+     none, uppercase, lowercase, capitalize
+   Example:
+     text-transform: uppercase;
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Typography Demo</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Henny+Penny&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 1.6;
+        }
+
+        header {
+            font-size: 2.5em;
+            font-family: 'Henny Penny', cursive;
+            text-transform: capitalize;
+            text-align: center;
+            text-decoration: line-through;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            line-height: 1.8;
+            letter-spacing: 1.5px;
+            word-spacing: 5px;
+            cursor: crosshair;
+            font-weight: bold;
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            color: #444;
+        }
+
+        .henny-penny-regular {
+            font-family: 'Henny Penny', system-ui;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #555;
+            margin: 20px 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <header>Hello Typography Demo</header>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit sed deleniti ad numquam aliquid expedita? 
+            Unde nulla, illum blanditiis adipisci ea eveniet pariatur facere nostrum, harum ullam aliquid? Ipsa rerum 
+            sint fugit optio qui consectetur nesciunt nemo. Quas iste voluptas temporibus, provident accusantium 
+            pariatur, perferendis culpa assumenda similique odio molestiae.
+        </p>
+
+        <div class="henny-penny-regular">
+            Example text styled with Henny Penny font.
+        </div>
+
+        <a href="#">Learn More</a>
+    </section>
+
+</body>
+
+</html>

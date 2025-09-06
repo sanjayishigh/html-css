@@ -1,0 +1,94 @@
+<!-- /*
+🌈 CSS Gradients Overview:
+
+1️⃣ Linear Gradient:
+   - Creates a gradient along a straight line (default top to bottom).
+   Syntax:
+     background: linear-gradient(direction, color1, color2, ...);
+   Example:
+     background: linear-gradient(to right, red, yellow);
+
+   Example with angle:
+     background: linear-gradient(45deg, blue, green);
+
+2️⃣ Radial Gradient:
+   - Creates a gradient radiating from the center (or specified position).
+   Syntax:
+     background: radial-gradient(shape size at position, color1, color2, ...);
+   Example:
+     background: radial-gradient(circle, red, yellow, green);
+
+3️⃣ Repeating Linear Gradient:
+   - Repeats the linear gradient pattern indefinitely.
+   Syntax:
+     background: repeating-linear-gradient(direction, color-stop1, color-stop2, ...);
+   Example:
+     background: repeating-linear-gradient(45deg, red 0 10px, yellow 10px 20px);
+
+4️⃣ Repeating Radial Gradient:
+   - Repeats the radial gradient pattern.
+   Syntax:
+     background: repeating-radial-gradient(shape size at position, color-stop1, color-stop2, ...);
+   Example:
+     background: repeating-radial-gradient(circle, red 0 10px, yellow 10px 20px);
+
+✨ Notes:
+- Gradients are used as values for `background` or `background-image`.
+- Multiple color stops can be defined for smooth transitions.
+- You can combine with transparency using rgba(), e.g.:
+    background: linear-gradient(to right, rgba(255,0,0,0.5), rgba(0,0,255,0.5));
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Gradient Demo</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .gradient-background {
+            position: relative;
+            height: 100vh;
+            background-image: 
+                radial-gradient(rgba(0, 128, 128, 0.7), rgba(255, 0, 8, 0.4)),
+                url('https://images.pexels.com/photos/1983037/pexels-photo-1983037.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="gradient-background"></div>
+
+    <div class="overlay-text">
+        🌈 Radial Gradient Overlay + Image <br>
+        Example of layered backgrounds
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!-- /*
+🎨 CSS Inheritance:
+
+1️⃣ The Concept
+   - Properties set on a parent element are passed down to its children.
+   Example:
+     body {
+       color: blue; /* All text inside body will be blue */
+     }
+
+2️⃣ Inherited Properties
+   - Text-related styles are typically inherited.
+   Example:
+     div {
+       font-family: Arial, sans-serif; /* p, h1, span inside will be Arial */
+     }
+
+3️⃣ Non-Inherited Properties
+   - Box-related styles (layout, size, borders) are not inherited.
+   Example:
+     div {
+       border: 1px solid black; /* Children do NOT get this border */
+     }
+
+4️⃣ Forcing Inheritance
+   - Use the `inherit` keyword to make a child adopt a parent's style.
+   Example:
+     p {
+       border: inherit; /* The <p> will copy its parent's border */
+     }
+
+⚡ Key Strategy:
+   Set common text styles on the `<body>` tag and let inheritance apply
+   them globally, reducing repetitive code.
+   -only typography is inherited
+   -layout is not inherited(forced)
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>CSS Inheritance Demo</title>
+    
+    <style>
+        /* General styling for a clean, modern look */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333; /* Base text color, inherited by all elements */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 20px;
+            font-family: cursive;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 2rem 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 650px;
+        }
+
+        h1 {
+            color: #1a253c;
+        }
+
+        /* --- Inheritance Demonstration --- */
+
+        /* 1. Parent element with inheritable and non-inheritable styles */
+        .parent-box {
+            /* These properties will NOT be inherited by default */
+            border: 3px dashed #007bff;
+            background-color: #e7f3ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+
+            /* This 'color' property WILL be inherited by its children */
+            color: #0056b3;
+        }
+
+        .parent-box h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #bce0ff;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* 2. Child element that will force inheritance */
+        .force-inherit {
+            background-color: #fff;
+            padding: 1rem;
+            font-weight: 600;
+            /* This command makes the element copy its parent's border style */
+            border: inherit;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="card">
+        <h1>Understanding Inheritance</h1>
+        <p>This text inherits its color (`#333`) from the `<body>` tag.</p>
+
+        <div class="parent-box">
+            <h2>Inside the Parent Box</h2>
+            <p>
+                This paragraph <strong>automatically inherits the dark blue text color</strong>
+                from its parent. Notice it does NOT inherit the border or the light blue background.
+            </p>
+            <p class="force-inherit">
+                This special paragraph <strong>forces inheritance</strong> of its parent's dashed border using the `border: inherit;` rule.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>

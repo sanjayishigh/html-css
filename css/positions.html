@@ -1,0 +1,182 @@
+<!-- /*
+📌 CSS Positions:
+
+1️⃣ static
+   - The default value. The element follows the normal flow of the page.
+   - The properties `top`, `bottom`, `left`, `right` have no effect.
+   Example:
+     div {
+       position: static;
+     }
+
+2️⃣ relative
+   - The element is positioned relative to its normal position.
+   - The space it would normally occupy is preserved.
+   Example:
+     div {
+       position: relative;
+       top: -10px; /* Moves 10px up from where it should be */
+     }
+
+3️⃣ absolute
+   - The element is removed from the normal flow and positioned relative
+     to its nearest "positioned" ancestor (anything but static).
+   Example:
+     div {
+       position: absolute;
+       top: 0; /* 0px from the top of its positioned ancestor */
+       right: 0;
+     }
+
+4️⃣ fixed
+   - The element is positioned relative to the viewport (the browser window).
+   - It stays in the same place even when the page is scrolled.
+   Example:
+     div {
+       position: fixed;
+       bottom: 20px;
+       right: 20px;
+     }
+
+5️⃣ sticky
+   - A hybrid of relative and fixed. It behaves as `relative` until it
+     hits a specified position, then it becomes `fixed`.
+   Example:
+     nav {
+       position: sticky;
+       top: 0; /* Sticks to the top of the viewport when scrolled */
+     }
+
+⚡ Key Concept:
+   An element with `position: absolute` looks for the nearest parent that has
+   `position: relative`, `absolute`, `fixed`, or `sticky`. This is crucial
+   for containing absolutely positioned elements.
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positions Demo</title>
+    
+
+    <style>
+        body {
+            font-family: cursive;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        h1, h2 {
+            color: #1a253c;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* A general style for all the boxes we are positioning */
+        .box {
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Position Demonstrations --- */
+
+        .static-box {
+            background-color: #6c757d;
+            /* position: static; is the default, no need to declare it */
+        }
+
+        .relative-box {
+            position: relative;
+            top: 20px; /* Moves 20px down from its normal position */
+            left: 400px; /* Moves 30px right from its normal position */
+            background-color: #17a2b8;
+        }
+
+        /* This container is the "positioned ancestor" for the absolute box */
+        .relative-container {
+            position: relative;
+            background-color: #f0f0f0;
+            border: 2px dashed #ccc;
+            height: 150px;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        p{
+            margin: 50px;
+        }
+
+        .absolute-box {
+            position: absolute;
+            top: 10px;    /* 10px from the top of .relative-container */
+            right: 10px;  /* 10px from the right of .relative-container */
+            width: 150px; /* smaller width to fit inside */
+            background-color: #dc3545;
+        }
+        
+        .fixed-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            z-index: 100; /* Ensures it stays on top of other elements */
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0; /* Will stick to the top of the viewport on scroll */
+            background-color: #ffc107;
+            color: #333;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 2rem -2rem; /* Stretch across the top */
+            z-index: 50;
+        }
+        
+        .spacer {
+            height: 1200px; /* To create enough space to scroll */
+            background-image: linear-gradient(to bottom, #fff, #f4f7f6);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>CSS Positions Demo</h1>
+
+    <h2>Position: static</h2>
+    <div class="box static-box">STATIC</div>
+    <p>This is the default position. It just sits in the normal flow of the page.</p>
+    
+    <h2>Position: relative</h2>
+    <div class="box relative-box">RELATIVE</div>
+    <p>This box is moved 20px down and 30px right from its normal spot. Notice the original space it occupied is still empty.</p>
+    
+    <h2>Position: absolute</h2>
+    <div class="relative-container">
+        I am a relative container. My child below is positioned relative to me.
+        <div class="box absolute-box">ABSOLUTE</div>
+    </div>
+    
+    <div class="fixed-box box">FIXED</div>
+    <p>(Scroll down to see the sticky and fixed elements in action!)</p>
+    
+    <h2 class="sticky-header">I AM A STICKY HEADER</h2>
+    
+    <p>This text is here to create scrollable content. As you scroll down, the "FIXED" box will stay in the bottom-right corner of your screen, while the "STICKY" header will stick to the top once you scroll past it.</p>
+    
+    <div class="spacer"></div>
+
+</body>
+</html>
