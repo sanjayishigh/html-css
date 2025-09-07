@@ -1,0 +1,153 @@
+<!-- /*
+🎨 CSS mix-blend-mode:
+
+1️⃣ What It Is
+   - A property that sets how an element's content should blend with the
+     content and background of its parent element.
+   Example:
+     img {
+       mix-blend-mode: multiply;
+     }
+
+2️⃣ Common Blend Modes
+   - `multiply`: Darkens the image by multiplying the colors. Great for shadows.
+   - `screen`: Lightens the image. The opposite of multiply. Good for highlights.
+   - `overlay`: A mix of multiply and screen. Preserves highlights and shadows.
+   - `difference`: Creates a color inversion effect based on brightness.
+   Example:
+     .highlight {
+       mix-blend-mode: screen;
+     }
+
+3️⃣ How It Works
+   - It blends the "source" (the element with the property) with the
+     "backdrop" (what's behind the element). The result depends on the
+     colors of both layers.
+   Example:
+     h1 {
+       color: white;
+       mix-blend-mode: overlay; /* Text color will interact with background */
+     }
+
+4️⃣ Use Cases
+   - Most powerful for creating dynamic text effects over images, colorful
+     UI elements, and photo filter effects directly in the browser.
+   Example:
+     .knockout-text {
+       mix-blend-mode: difference;
+     }
+
+⚡ Key Requirement:
+   For `mix-blend-mode` to have a visible effect, the element must be
+   overlapping another element. It needs something behind it to blend with.
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS mix-blend-mode Demo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .main-container {
+            max-width: 800px;
+            width: 100%;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a253c;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* --- mix-blend-mode Demonstration --- */
+        
+        .blend-container {
+            position: relative; /* Needed for stacking elements */
+            height: 400px;
+            border-radius: 8px;
+            /* A vibrant background for blending */
+            background: linear-gradient(rgba(255, 0, 0, 0.255),rgba(0, 128, 128, 0.286)), url(https://images.unsplash.com/photo-1755745360285-0633c972b0fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDd8aVVJc25WdGpCMFl8fGVufDB8fHx8fA%3D%3D),
+            url(https://images.unsplash.com/photo-1754344247886-4bfa285e499a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDE4fGlVSXNuVnRqQjBZfHxlbnwwfHx8fHw%3D);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-blend-mode: multiply,screen;
+        }
+
+        /* The text element that will be blended */
+        .blended-text {
+            color: white;
+            font-size: 5rem;
+            font-weight: 900;
+            text-align: center;
+            line-height: 400px; /* Vertically center in the container */
+            
+            /* The text color will interact with the background gradient */
+            mix-blend-mode: overlay;
+        }
+
+        /* A shape that will be blended */
+        .blended-shape {
+            position: absolute;
+            top: 30%;
+            left: 15%;
+            width: 150px;
+            height: 150px;
+            background-color: #00ffc3; /* A bright cyan color */
+            border-radius: 50%; /* Make it a circle */
+
+            /* This will lighten the background where it overlaps */
+            mix-blend-mode: soft-light;
+        }
+        
+        /* Another shape with a different blend mode */
+        .blended-shape-2 {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            width: 200px;
+            height: 100px;
+            background-color: #ffc400; /* A bright yellow color */
+
+            /* This creates a high-contrast, color-inverting effect */
+            mix-blend-mode: difference;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="main-container">
+        <h1>CSS `mix-blend-mode` Demo</h1>
+        <div class="blend-container">
+            <div class="blended-shape"></div>
+            <div class="blended-shape-2"></div>
+            <h2 class="blended-text">BLEND</h2>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,107 +1,56 @@
-<!-- /*
-🏁 CSS Grid Layout:
-
-1️⃣ The Grid Container
-   - To activate Grid, set the display property of a container to `grid`.
-   - This makes its direct children "grid items".
-   Example:
-     .container {
-       display: grid;
-     }
-
-2️⃣ Define Columns (`grid-template-columns`)
-   - Defines the number and width of columns. The `fr` unit is a
-     fraction of the available space.
-   Example:
-     .container {
-       /* Creates three equal-width columns */
-       grid-template-columns: 1fr 1fr 1fr;
-     }
-
-3️⃣ Define Rows (`grid-template-rows`)
-   - Defines the height of grid rows. Often, `auto` is used to let
-     the content determine the height.
-   Example:
-     .container {
-       grid-template-rows: auto; /* Height adjusts to content */
-     }
-
-4️⃣ Place Items (`grid-column` & `grid-row`)
-   - You can explicitly place items by telling them which grid line
-     to start and end on.
-   Example:
-     .item-1 {
-       /* Starts on column line 1, ends on line 3 (spans 2 columns) */
-       grid-column: 1 / 3;
-     }
-
-5️⃣ Gaps (`gap`)
-   - A simple property to create space between columns and rows.
-   Example:
-     .container {
-       gap: 20px;
-     }
-
-⚡ Key Difference:
-   Think of **Flexbox for one-dimensional layouts** (either a row OR a
-   column). Think of **Grid for two-dimensional layouts** (rows AND
-   columns at the same time).
-*/ -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <title>CSS Grid Demo</title>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        body {
-            font-family: cursive;
-            background-color: #f4f7f6;
-            color: #333;
-            padding: 2rem;
+        body{
+            background-color: white;
+            height: 100%;
+            width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: cursive;
         }
 
-        .main-container {
+        main{
             max-width: 900px;
-            width: 100%;
-            margin: 0 auto;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width:100%;
+            background-color: whitesmoke;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1) ;
+            padding: 2rem 2rem;
+            margin: 6rem;
+            border-radius: 50px;
+            border-style: ridge;
+            overflow: hidden; /* Prevent child overflow */
         }
-
-        h1 {
-            color: #1a253c;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 0.5rem;
+        h1{
+            font-weight: 600;
             text-align: center;
         }
 
-        /* --- Grid Demonstration --- */
-        
-        .grid-container {
-            display: grid; /* This is what activates Grid! */
-            
-            /* Define 3 equal-width columns */
-            grid-template-columns: repeat(3, 1fr);
-            
-            /* Let rows size themselves automatically based on content */
-            grid-auto-rows: minmax(100px, auto);
-
-            /* Add a gap between all items */
-            gap: 1rem;
+        .grid-container{
+            display: grid;
+            grid-template-rows: repeat(8, 1fr) minmax(50px,1fr);
+            grid-template-columns: repeat(3, 1fr) ;
+            margin: 2rem;
+            padding: 2rem 0;;
         }
 
-        .grid-item {
+        nav{
+            grid-column : 1/ -1 ;
+            text-align: center;
+            height: 0.5rem;
+        }
+
+        .grid-item{
             background-color: #28a745;
             color: white;
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 2rem;
+            margin: 0.5rem;
+            border-radius: 10px;
             font-weight: 600;
             text-align: center;
             display: flex;
@@ -109,45 +58,40 @@
             align-items: center;
             font-size: 1.2rem;
         }
-
-        /* --- Placing and Spanning Items --- */
-
-        /* Make the header span all 3 columns */
-        .header {
-            background-color: #007bff;
-            /* Start at column line 1 and go to the very end (-1) */
-            grid-column: 1 / -1; 
+        .main-content{
+            background-color: cornflowerblue;
+            grid-row: 4/ 9 ;
+            grid-column: 1 / 3;
         }
-
-        /* Make the sidebar span 2 rows */
-        .sidebar {
-            background-color: #6c757d;
-            /* Start at row line 2 and end at row line 4 */
-            grid-row: 2 / 4;
+        .header{
+            grid-column: 1/ -1;
+            grid-row:2/4;
         }
-        
-        /* Make the footer span all 3 columns */
-        .footer {
-            background-color: #343a40;
-            grid-column: 1 / -1;
+        .sidebar{
+            grid-row: 4/ 9 ;
+            background-color: gray;
+        }
+        .footer{
+            grid-column: 1/-1;
+        }
+        .extra-content2{
+            grid-column-end: -1;
         }
 
     </style>
 </head>
 <body>
-
-    <main class="main-container">
-        <h1>CSS Grid Demo</h1>
+    <main>
+        <h1>CSS grid - rows & columns</h1>
         <div class="grid-container">
+            <nav class="grid-item nav">Navigation</nav>
             <div class="grid-item header">Header</div>
+            <div class="grid-item main-content">Main-content</div>
             <div class="grid-item sidebar">Sidebar</div>
-            <div class="grid-item">Main Content 1</div>
-            <div class="grid-item">Main Content 2</div>
-            <div class="grid-item">Extra Content 1</div>
-            <div class="grid-item">Extra Content 2</div>
+            <div class="grid-item extra-content">Extra Content</div>
+            <div class="grid-item extra-content2">Extra Content</div>
             <div class="grid-item footer">Footer</div>
         </div>
     </main>
-
 </body>
 </html>

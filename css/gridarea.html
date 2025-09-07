@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CSS Grid with Template Areas</title>
+
+    <style>
+        body {
+            font-family: cursive;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .main-container {
+            max-width: 900px;
+            width: 100%;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #1a253c;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto;
+            gap: 1rem;
+
+            grid-template-areas:
+                "header header header"
+                "main main sidebar"
+                "extra1 extra2 sidebar"
+                "footer footer footer";
+        }
+
+        .grid-item {
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: #007bff;
+        }
+
+        .main {
+            grid-area: main;
+            background-color: cornflowerblue;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #6c757d;
+        }
+
+        .extra1 {
+            grid-area: extra1;
+            background-color: #28a745;
+        }
+
+        .extra2 {
+            grid-area: extra2;
+            background-color: #17a2b8;
+        }
+
+        .footer {
+            grid-area: footer;
+            background-color: #343a40;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main-container">
+        <h1>CSS Grid Template Areas Demo</h1>
+
+        <div class="grid-container">
+            <div class="grid-item header">Header</div>
+            <div class="grid-item main">Main Content</div>
+            <div class="grid-item sidebar">Sidebar</div>
+            <div class="grid-item extra1">Extra Content 1</div>
+            <div class="grid-item extra2">Extra Content 2</div>
+            <div class="grid-item footer">Footer</div>
+        </div>
+    </main>
+</body>
+
+</html>

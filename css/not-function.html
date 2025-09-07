@@ -1,0 +1,169 @@
+<!-- /*
+🚫 CSS :not() Pseudo-class:
+
+1️⃣ What It Is
+   - A functional pseudo-class, also known as the "negation" or "matches-none"
+     pseudo-class. It selects all elements that do NOT match the selector
+     list passed as its argument.
+   Example:
+     p:not(.highlight) {
+       color: gray; /* Styles all <p>s except those with class="highlight" */
+     }
+
+2️⃣ Simple Exclusions
+   - Its most common use is to apply a style to a group of elements while
+     excluding a specific one, preventing the need for override styles.
+   Example:
+     a:not(.active-link) {
+       text-decoration: underline;
+     }
+
+3️⃣ Multiple Exclusions
+   - You can pass a comma-separated list of selectors to exclude more
+     than one type of element.
+   Example:
+     div:not(.header, .footer) {
+       padding: 1rem; /* Adds padding to all divs except headers and footers */
+     }
+
+4️⃣ What You Can't Do
+   - You cannot nest another `:not()` pseudo-class inside it. It also
+     cannot be used to negate pseudo-elements like `::before` or `::after`.
+   Example:
+     /* The following selector is INVALID */
+     :not(::before) { ... }
+
+
+⚡ Key Strategy:
+   Use `:not()` to write cleaner, more direct CSS. Instead of styling
+   everything and then writing another rule to undo the style for one
+   element, simply exclude that element from the initial rule.
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS :not() Demo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #1a253c;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* --- :not() Demonstrations --- */
+
+        /* Example 1: Styling all links except the active one */
+        nav a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #007bff;
+            background-color: #e7f3ff;
+            transition: background-color 0.2s ease;
+        }
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+            cursor: default;
+        }
+        /* Only add a hover effect to links that are NOT active */
+        nav a:not(.active):hover {
+            background-color: #cce5ff;
+        }
+        
+        /* Example 2: Styling all images except one with a specific class */
+        .image-gallery img {
+            border: 4px solid transparent;
+            border-radius: 8px;
+            max-width: 100px;
+            margin: 5px;
+        }
+        /* Add a border to all images that are NOT the .profile-pic */
+        .image-gallery img:not(.profile-pic) {
+            border-color: #28a745;
+        }
+        
+        /* Example 3: Styling all inputs except disabled ones */
+        input {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+        }
+        input:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+        /* Add a focus style to all inputs that are NOT disabled */
+        input:not(:disabled):focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><code>:not()</code> Demo</h1>
+
+        <h2>1. Exclude Active Navigation Link</h2>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#" class="active">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <h2>2. Exclude a Specific Image</h2>
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=100" alt="Dog">
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=100" alt="Dog">
+            <img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=100" alt="Dog" class="profile-pic">
+        </div>
+        <p>All images have a green border <code>:not(.profile-pic)</code>.</p>
+        
+        <h2>3. Exclude Disabled Form Inputs</h2>
+        <form>
+            <input type="text" placeholder="You can focus on me">
+            <input type="text" placeholder="Me too!">
+            <input type="text" placeholder="I am disabled, you can't focus me" disabled>
+        </form>
+        
+    </div>
+
+</body>
+</html>

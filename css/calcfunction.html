@@ -1,0 +1,146 @@
+<!-- /*
+🧮 CSS calc() Function:
+
+1️⃣ What It Is
+   - A function that lets you perform mathematical calculations
+     (+, -, *, /) directly within CSS property values.
+   Example:
+     .element {
+       width: calc(100% - 80px);
+     }
+
+2️⃣ Mixing Units
+   - Its main power is the ability to mix different units, like
+     percentages with pixels, which is otherwise impossible.
+   Example:
+     .container {
+       height: calc(100vh - 60px); /* Full viewport height minus 60px */
+     }
+
+3️⃣ Operator Spacing
+   - The spaces around the `+` and `-` operators are required.
+   - For `*` and `/`, spaces are not required but are recommended for readability.
+   Example:
+     font-size: calc(1rem + 4px);   /* This is correct */
+     font-size: calc(1rem+4px);     /* This is INCORRECT and will not work */
+
+4️⃣ Common Use Cases
+   - Creating fluid layouts with fixed spacing, calculating viewport-based
+     dimensions, and precise element positioning.
+   Example:
+     .element {
+       /* Centers an element of a known width (e.g., 400px) */
+       left: calc(50% - 200px);
+     }
+
+⚡ Key Power:
+   Use `calc()` to combine the flexibility of relative units (like `%` or `vh`)
+   with the precision of absolute units (like `px` or `rem`).
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS calc() Demo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 1rem 2rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #1a253c;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- calc() Demonstrations --- */
+
+        /* Example 1: Fluid width with fixed spacing */
+        .fluid-container {
+            width: 100%;
+            border: 2px dashed #ccc;
+            padding: 1rem;
+        }
+        .fluid-box {
+            background-color: #17a2b8;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 6px;
+            /* The box is always 40px narrower than its container */
+            width: calc(100% - 40px);
+        }
+
+        /* Example 2: Viewport height minus a fixed header */
+        .header {
+            background-color: #343a40;
+            color: white;
+            height: 60px;
+            padding: 0 2rem;
+            line-height: 60px;
+            font-weight: 600;
+            border-radius: 6px;
+        }
+        .content-area {
+            background-color: #e9ecef;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-radius: 6px;
+            /* The content area takes up the remaining vertical space */
+            height: calc(40vh - 70px); /* 40% of viewport height minus header height */
+        }
+        
+        /* Example 3: Dynamic font size */
+        .dynamic-font {
+            /* Font size scales with viewport width, but has a fixed minimum */
+            font-size: calc(1rem + 2vw);
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="main-container">
+        <h1>CSS `calc()` Demo</h1>
+
+        <h2>1. Fluid Width with Fixed Spacing</h2>
+        <div class="fluid-container">
+            <div class="fluid-box">My width is calc(100% - 40px)</div>
+        </div>
+        
+        <h2 style="margin-top: 2rem;">2. Viewport Height Calculation</h2>
+        <div class="header">Header (60px tall)</div>
+        <div class="content-area">My height is calc(40vh - 70px)</div>
+
+        <h2 style="margin-top: 2rem;">3. Dynamic Font Size</h2>
+        <p class="dynamic-font">My font size is calc(1rem + 2vw).<br>Resize the browser to see me change!</p>
+        
+    </main>
+
+</body>
+</html>

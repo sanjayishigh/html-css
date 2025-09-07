@@ -1,0 +1,155 @@
+<!-- /*
+💧 DRY CSS (Don't Repeat Yourself):
+
+1️⃣ The Principle
+   - A programming principle aimed at reducing the repetition of code.
+     In CSS, it means abstracting common styles so they don't have to be
+     written multiple times.
+   Example:
+     /* Instead of defining padding on every button type... */
+     .btn { padding: 10px 20px; }
+
+2️⃣ The Problem (WET Code)
+   - "WET" stands for "Write Everything Twice" or "We Enjoy Typing." It
+     leads to larger, less efficient, and harder-to-maintain stylesheets.
+   Example:
+     /* WET: The padding and border-radius are repeated */
+     .btn-success { padding: 10px; border-radius: 5px; background: green; }
+     .btn-error { padding: 10px; border-radius: 5px; background: red; }
+
+3️⃣ The Solution (DRY Code)
+   - Create a reusable base class for shared styles and use modifier
+     classes for the unique styles. This is a core concept of BEM/OOCSS.
+   Example:
+     /* DRY: Shared styles are in .btn, unique styles are separate */
+     .btn { padding: 10px; border-radius: 5px; }
+     .btn-success { background: green; }
+     .btn-error { background: red; }
+
+4️⃣ Tools for DRY CSS
+   - **CSS Variables**: Define a value once (like a color) and reuse it.
+   - **Preprocessors (Sass/Less)**: Use mixins and extends to share entire
+     blocks of CSS rules.
+   Example:
+     :root { --brand-color: blue; }
+     .btn-primary { background: var(--brand-color); }
+
+⚡ Key Goal:
+   To write code that is maintainable, scalable, and easy to read. If you
+   need to change a shared style (like button padding), you should only
+   have to change it in one single place.
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRY CSS Demo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Define reusable values once (DRY principle) */
+            --color-primary: #007bff;
+            --color-danger: #dc3545;
+            --color-success: #28a745;
+            --border-radius: 6px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #1a253c;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- DRY CSS Demonstration --- */
+
+        /* 1. Base class for all buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        
+        /* 2. Modifier classes for specific button types */
+        .btn-primary {
+            background-color: var(--color-primary);
+        }
+        .btn-danger {
+            background-color: var(--color-danger);
+        }
+        
+        /* 3. Base class for all alerts */
+        .alert {
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: var(--border-radius);
+        }
+        
+        /* 4. Modifier classes for specific alert types */
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>DRY CSS (Don't Repeat Yourself)</h1>
+
+        <h2>Example 1: Buttons</h2>
+        <p>Both buttons share padding, border-radius, and font styles from the <code>.btn</code> class.</p>
+        <button class="btn btn-primary">Primary Action</button>
+        <button class="btn btn-danger">Delete Action</button>
+        
+        <h2 style="margin-top: 2rem;">Example 2: Alerts</h2>
+        <p>Both alerts share padding and border styles from the <code>.alert</code> class.</p>
+        <div class="alert alert-success">
+            <strong>Success!</strong> Your action was completed.
+        </div>
+        <div class="alert alert-danger">
+            <strong>Error!</strong> There was a problem with your submission.
+        </div>
+
+    </div>
+
+</body>
+</html>
