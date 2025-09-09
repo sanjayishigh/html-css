@@ -1,0 +1,334 @@
+:root{
+    --main-color: #deab5f;
+    --primary-color:#312e2e;
+}
+
+button{
+    padding: 10px 30px;
+    background: var(--main-color );
+    border: none;
+    cursor: pointer;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: black;
+}
+
+nav{
+    display: flex;
+    background: #100e0f;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    font-family: cursive;
+    padding: 20px;
+    position: sticky;
+    top:0;
+}
+
+li{
+    display: inline;
+    list-style: none;
+    padding: 10px;
+}
+
+li a{
+    color: white;
+    text-decoration: none;
+}
+
+li a:hover{
+    border-bottom: 2px solid var(--main-color);
+}
+
+header{
+    background: url(https://images.pexels.com/photos/129207/pexels-photo-129207.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+
+    font-family: cursive;
+    font-weight: normal;
+    
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-headings{
+    position: absolute;
+    top: 14rem;
+    font-size: 4rem;
+    word-spacing: 10px;
+    margin-bottom: -40px;
+}
+
+.primary-headings{
+    position: absolute;
+    bottom: 5rem;
+    font-size: 4rem;
+    word-spacing: 10px;
+    margin-bottom: -40px;
+
+}
+
+.main-btn{
+    position: absolute;
+    bottom: 2rem;
+    padding: 10px 30px;
+    margin-top: 50px;
+    background: transparent;
+    background: var(--main-color);
+    border: none;
+    transform: translateX(10px);
+    transform: translateY(50px);
+}
+
+#our-story{
+    margin-top: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 30px;
+}
+
+.img{
+    height: 400px;
+    width: 400px;
+    background: url(https://images.pexels.com/photos/20884081/pexels-photo-20884081.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+.title-style{
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.title{
+    color: #fff;
+    font-family: cursive;
+    font-size: 4rem;
+    color: #fff;
+    transform: translateX(-100px);
+}
+
+.line{
+    width:100px;
+    height: 2px;
+    background: white;
+    transform: translateX(-120px);
+}
+
+.section-content p{
+    max-width: 500px;
+    color: white;
+    font-family: cursive;
+    line-height: 20px;
+    margin: 20px 0;
+}
+
+
+#our-story{
+    margin-top: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.greet{
+    color: #fff;
+    font-family: cursive;
+    font-size: 4rem;
+    color: #fff;
+    transform: translateX(-100px);
+    max-width: 500px;  
+    word-wrap: break-word;
+    transform: translateX(1px);
+}
+
+.img2{
+    height: 400px;
+    width: 400px;
+    background: radial-gradient(rgba(255, 0, 0, 0),rgb(0, 0, 0)) , url(https://images.unsplash.com/photo-1746274083810-7454c3064664?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-position: center;
+    background-size: cover;    
+}
+
+.products{
+    margin-top: 5rem;
+
+}
+
+.title-three{
+    font-size: 4rem;
+    margin: 10rem 10rem;
+    color: #fff;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.card{
+    border: 2px solid var(--main-color);
+    padding: 0 20px;
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.card-img{
+    width:100px;
+    height:100px;
+    position: absolute;
+    top:-60px;
+    border: 2px solid var(--main-color);
+}
+
+.img-one{
+    background: url(https://images.pexels.com/photos/5386660/pexels-photo-5386660.jpeg);
+    background-position: bottom;
+    background-size: cover;
+}
+
+.img-two{
+    background: url(https://images.pexels.com/photos/4226806/pexels-photo-4226806.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+.img-three{
+    background: url(https://images.pexels.com/photos/6006666/pexels-photo-6006666.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+.card-title{
+    color: #fff;
+    font-family: cursive;
+    margin-top: 50px;
+
+}
+.card .items{
+    color: #fff;
+    margin: 20px 0;
+    font-family: cursive;
+}
+footer{
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: cursive;
+    color: #fff;
+}
+
+footer .container{
+    margin:10px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.para{
+    color: #fff;
+    font-family: cursive;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+footer .heading-info{
+    margin-bottom: 20px;
+}
+
+footer p{
+    line-height: 25px;
+}
+
+span{
+    color: var(--main-color);
+}
+
+hr{
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width:768px){
+    .main-headings .primary-headings{
+        font-size: 1rem;
+    }
+
+    #our-story{
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .img2{
+        image-resolution: inherit;
+    }
+
+    .title{
+        text-align: center;
+        transform: translateX(10px);
+    }
+    .title-three{
+        text-align: center;
+        transform: translateX(90px);
+    }
+    p{
+        margin-top: 10px;
+    }
+
+    footer{
+        margin-bottom: 120px;
+    }
+}
+
+/*========== Mobile Devices (small phones) =========*/
+@media only screen and (max-width: 480px) {
+    /* Styles for very small devices (phones) */
+}
+
+/*========== Small Devices (phones) =========*/
+@media only screen and (max-width: 600px) {
+    /* Styles for small phones and small devices */
+}
+
+/*========== Medium Devices (tablets) =========*/
+@media only screen and (max-width: 768px) {
+    /* Styles for tablets */
+}
+
+/*========== Large Devices (small laptops) =========*/
+@media only screen and (max-width: 992px) {
+    /* Styles for small laptops / large tablets */
+}
+
+/*========== Extra Large Devices (desktops) =========*/
+@media only screen and (max-width: 1200px) {
+    /* Styles for desktops with smaller width */
+}
