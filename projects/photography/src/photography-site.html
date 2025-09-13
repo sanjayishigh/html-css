@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Photography — Elegant Portfolio</title>
+    <meta name="description"
+        content="An elegant photography portfolio with a modern gallery, lightbox, blog, services, and contact form." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="output.css">
+    <!-- Tailwind Play CDN (development only) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Tailwind theme + custom utilities -->
+    <style type="text/tailwindcss">
+        @theme {
+      --color-brand: #137548;
+      --color-ink: #212221;
+    }
+
+    :root {
+      color-scheme: light dark;
+    }
+
+    html, body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Playfair Display", serif;
+    }
+
+    .font-display {
+      font-family: "Playfair Display", serif;
+    }
+
+    /* Masonry (CSS columns approach) */
+    .masonry {
+      column-gap: 1rem;
+    }
+    @media (min-width: 640px) { .masonry { column-count: 2; } }
+    @media (min-width: 1024px) { .masonry { column-count: 3; } }
+    @media (min-width: 1280px) { .masonry { column-count: 4; } }
+    .masonry-item {
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      display: inline-block;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    /* Aesthetic helpers */
+    .glass {
+      @apply bg-white/70 dark:bg-neutral-900/60 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
+    }
+
+    /* Lightbox animations */
+    .fade-in {
+      animation: fadeIn 180ms ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(.98); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-ink dark:bg-neutral-950 dark:text-neutral-100 selection:bg-brand/20 selection:text-brand">
+    <!-- Skip link -->
+    <a href="#main"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 px-3 py-2 rounded-md bg-brand text-white">Skip
+        to content</a>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50">
+        <nav class="glass">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex h-16 items-center justify-between">
+                    <a href="#" class="flex items-center gap-3">
+                        <span
+                            class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand/10 text-brand font-black">P</span>
+                        <span class="font-display text-xl font-bold tracking-tight">The <span
+                                class="text-brand">Photography</span></span>
+                    </a>
+
+                    <ul class="hidden md:flex items-center gap-8">
+                        <li><a href="#home" class="hover:text-brand">Home</a></li>
+                        <li><a href="#gallery" class="hover:text-brand">Portfolio</a></li>
+                        <li><a href="#about" class="hover:text-brand">Founder</a></li>
+                        <li><a href="#services" class="hover:text-brand">Services</a></li>
+                        <li><a href="#blog" class="hover:text-brand">Blog</a></li>
+                        <li><a href="#contact" class="hover:text-brand">Contact</a></li>
+                    </ul>
+
+                    <div class="flex items-center gap-3">
+                        <button id="themeToggle" aria-label="Toggle dark mode"
+                            class="p-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10">
+                            <svg class="h-5 w-5 hidden dark:block" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M21.64 13a1 1 0 0 0-1.05-.14 8 8 0 0 1-10.45-10.4 1 1 0 0 0-1.19-1.3A10 10 0 1 0 22 14a1 1 0 0 0-.36-1z" />
+                            </svg>
+                            <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10 10h2v-3h-2v3zM4.22 19.78l1.79-1.8-1.79-1.79-1.79 1.79 1.79 1.8zM20 13h3v-2h-3v2zm-2.76 6.78l1.8-1.79-1.8-1.8-1.79 1.8 1.79 1.79zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm8.83-2.16l-1.79-1.79-1.8 1.79 1.8 1.79 1.79-1.79z" />
+                            </svg>
+                        </button>
+                        <a href="#contact"
+                            class="hidden sm:inline-flex items-center rounded-md bg-brand px-4 py-2 text-white hover:bg-brand/90">Book
+                            a Shoot</a>
+                        <button id="mobileMenuBtn"
+                            class="md:hidden p-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10"
+                            aria-label="Open menu">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="md:hidden hidden border-t border-black/5 dark:border-white/10">
+                <ul class="mx-auto max-w-7xl px-4 py-3 space-y-2">
+                    <li><a href="#home"
+                            class="block px-3 py-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Home</a></li>
+                    <li><a href="#gallery"
+                            class="block px-3 py-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Portfolio</a>
+                    </li>
+                    <li><a href="#about"
+                            class="block px-3 py-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Founder</a></li>
+                    <li><a href="#services"
+                            class="block px-3 py-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Services</a></li>
+                    <li><a href="#blog"
+                            class="block px-3 py-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Blog</a></li>
+                    <li><a href="#contact"
+                            class="block px-3 py-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <!-- HERO -->
+        <section id="home" class="flex relative isolate pb-25">
+            <div class="absolute inset-0 -z-10">
+                <img src="images/cassidy-towers-3_XEOGZ_4b4-unsplash.jpg" alt="Abstract architectural composition"
+                    class="h-[85vh] w-full object-cover" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t h-[85vh] from-white via-white/60 to-transparent dark:from-neutral-950 dark:via-neutral-950/60">
+                </div>
+            </div>
+
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-50 pb-16">
+                <div class="grid lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h1 class="font-display text-5xl sm:text-6xl font-bold leading-tight">
+                            The <span class="text-brand">Photography</span>
+                        </h1>
+                        <blockquote class="mt-6 text-xl text-neutral-700 dark:text-neutral-300">
+                            “<span class="text-brand font-semibold">Photography</span> is the story <br
+                                class="hidden sm:block"> that words can’t tell.”
+                        </blockquote>
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <a href="#gallery"
+                                class="inline-flex items-center rounded-md bg-brand px-5 py-3 text-white hover:bg-brand/90">View
+                                Portfolio</a>
+                            <a href="#about"
+                                class="inline-flex items-center rounded-md border border-black/10 dark:border-white/20 px-5 py-3 hover:bg-black/5 dark:hover:bg-white/10">Meet
+                                the Founder</a>
+                        </div>
+                        <p class="mt-6 max-w-2xl text-neutral-600 dark:text-neutral-400">
+                            Artfully capturing people, places, and stories through timeless imagery and meticulous
+                            craft.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT FOUNDER -->
+        <section id="about" class="py-24">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4 -z-10 rounded-3xl bg-brand/10 blur-2xl"></div>
+                        <div class="glass rounded-3xl p-4">
+                            <img src="images/karl-fredrickson-DsAjH9B24G8-unsplash.jpg" alt="Photographer at work"
+                                class="rounded-2xl w-full object-cover" loading="lazy" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="font-display text-4xl font-bold">About <span class="text-brand">Founder</span></h2>
+                        <p class="mt-4 text-neutral-700 dark:text-neutral-300">
+                            Alec Soth is an American photographer known for intimate, large-scale projects across the
+                            American Midwest, often focusing on quiet moments, loners, and dreamers.
+                        </p>
+
+                        <dl class="mt-8 grid sm:grid-cols-2 gap-6">
+                            <div class="glass rounded-xl p-5">
+                                <dt class="font-semibold">Awards & Exhibitions</dt>
+                                <dd class="text-neutral-600 dark:text-neutral-400 mt-1">20+ solo exhibitions worldwide
+                                </dd>
+                            </div>
+                            <div class="glass rounded-xl p-5">
+                                <dt class="font-semibold">Publications</dt>
+                                <dd class="text-neutral-600 dark:text-neutral-400 mt-1">Multiple acclaimed photo books
+                                </dd>
+                            </div>
+                            <div class="glass rounded-xl p-5">
+                                <dt class="font-semibold">Specialties</dt>
+                                <dd class="text-neutral-600 dark:text-neutral-400 mt-1">Portraits, documentary,
+                                    editorial</dd>
+                            </div>
+                            <div class="glass rounded-xl p-5">
+                                <dt class="font-semibold">Based In</dt>
+                                <dd class="text-neutral-600 dark:text-neutral-400 mt-1">Minneapolis, USA</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FILTERABLE GALLERY -->
+        <section id="gallery" class="py-24">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex items-end justify-between gap-4 flex-wrap">
+                    <div>
+                        <h2 class="font-display text-4xl font-bold">Recent <span class="text-brand">Projects</span></h2>
+                        <p class="mt-2 text-neutral-600 dark:text-neutral-400">Browse by category and open images in a
+                            lightbox.</p>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="flex flex-wrap gap-4">
+                        <button
+                            class="filter-btn rounded-full border px-4 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                            data-filter="all">All</button>
+                        <button
+                            class="filter-btn rounded-full border px-4 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                            data-filter="web">Web</button>
+                        <button
+                            class="filter-btn rounded-full border px-4 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                            data-filter="impact">Impact</button>
+                        <button
+                            class="filter-btn rounded-full border px-4 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                            data-filter="personal">Personal</button>
+                        <button
+                            class="filter-btn rounded-full border px-4 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                            data-filter="fancy">Fancy</button>
+                        <button
+                            class="filter-btn rounded-full border px-4 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                            data-filter="nature">Nature</button>
+                        <button
+                            class="filter-btn rounded-full border px-4 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                            data-filter="luxury">Luxury</button>
+                    </div>
+                </div>
+
+                <!-- Masonry -->
+                <div id="masonry" class="grid-cols-3 grid-rows-2 grid masonry mt-10">
+                    <!-- Each item: add data-category and data-full for lightbox -->
+                    <figure class="masonry-item group" data-category="web">
+                        <img src="images/reinhart-julian-WxM465oM4j4-unsplash.jpg"
+                            data-full="images/reinhart-julian-WxM465oM4j4-unsplash.jpg" alt="Web design project"
+                            class="w-full rounded-xl object-cover transition hover:opacity-90" loading="lazy" />
+                        <figcaption class="mt-2 text-sm text-brand">Web Design</figcaption>
+                    </figure>
+
+                    <figure class="masonry-item group" data-category="impact">
+                        <img src="images/william-thomas-ny6tO4ItOEY-unsplash.jpg"
+                            data-full="images/william-thomas-ny6tO4ItOEY-unsplash.jpg" alt="Impactful portrait"
+                            class="w-full rounded-xl object-cover transition hover:opacity-90" loading="lazy" />
+                        <figcaption class="mt-2 text-sm text-brand">Impact</figcaption>
+                    </figure>
+
+                    <figure class="masonry-item group h-full" data-category="personal">
+                        <div class="h-[263px] pd-0 m-0">
+                            <img src="images/james-adams-x0rJ-rzX7S8-unsplash.jpg"
+                                data-full="images/james-adams-x0rJ-rzX7S8-unsplash.jpg" alt="Personal project"
+                                class="w-full h-full rounded-xl object-cover transition hover:opacity-90"
+                                loading="lazy" />
+                        </div>
+                        <figcaption class="mt-2 text-sm text-brand">Personal</figcaption>
+                    </figure>
+
+                    <figure class="masonry-item group" data-category="fancy">
+                        <img src="images/kameron-kincade-CnVWM7rIM-E-unsplash.jpg"
+                            data-full="images/kameron-kincade-CnVWM7rIM-E-unsplash.jpg" alt="Fashion editorial"
+                            class="w-full rounded-xl object-cover transition hover:opacity-90" loading="lazy" />
+                        <figcaption class="mt-2 text-sm text-brand">Fancy</figcaption>
+                    </figure>
+
+                    <figure class="masonry-item group" data-category="nature">
+                        <img src="images/marco-xu-ToUPBCO62Lw-unsplash.jpg"
+                            data-full="images/marco-xu-ToUPBCO62Lw-unsplash.jpg" alt="Nature scene"
+                            class="w-full rounded-xl object-cover transition hover:opacity-90" loading="lazy" />
+                        <figcaption class="mt-2 text-sm text-brand">Nature</figcaption>
+                    </figure>
+
+                    <figure class="masonry-item group" data-category="luxury">
+                        <img src="images/alif-ngoylung-jg-6ARMiaPM-unsplash.jpg"
+                            data-full="images/alif-ngoylung-jg-6ARMiaPM-unsplash.jpg" alt="Luxury lifestyle"
+                            class="w-full rounded-xl object-cover transition hover:opacity-90" loading="lazy" />
+                        <figcaption class="mt-2 text-sm text-brand">Luxury</figcaption>
+                    </figure>
+
+                    <!-- Add more images as needed following the same structure -->
+                </div>
+
+                <div class="mt-10 flex justify-center">
+                    <a href="#contact"
+                        class="inline-flex items-center rounded-md border px-5 py-3 hover:bg-black/5 dark:hover:bg-white/10">Commission
+                        a Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services" class="py-24 bg-neutral-50 dark:bg-neutral-900/50">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-4xl font-bold text-center">Services & <span
+                        class="text-brand">Packages</span></h2>
+                <p class="mt-2 text-center text-neutral-600 dark:text-neutral-400">Tailored experiences for brands,
+                    couples, and creatives.</p>
+
+                <div class="mt-10 grid md:grid-cols-3 gap-6">
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="font-semibold text-lg">Portrait Session</h3>
+                        <p class="mt-2 text-neutral-600 dark:text-neutral-400">90 minutes on-location, 20 edited photos,
+                            online gallery.</p>
+                        <div class="mt-4 font-bold text-brand">₹12,000</div>
+                        <a href="#contact"
+                            class="mt-6 inline-flex rounded-md bg-brand px-4 py-2 text-white hover:bg-brand/90">Book</a>
+                    </div>
+                    <div class="glass rounded-2xl p-6 border-2 border-brand/30">
+                        <h3 class="font-semibold text-lg">Editorial / Brand</h3>
+                        <p class="mt-2 text-neutral-600 dark:text-neutral-400">Creative direction, lookbook,
+                            multi-location coverage.</p>
+                        <div class="mt-4 font-bold text-brand">Custom</div>
+                        <a href="#contact"
+                            class="mt-6 inline-flex rounded-md bg-brand px-4 py-2 text-white hover:bg-brand/90">Inquire</a>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="font-semibold text-lg">Weddings</h3>
+                        <p class="mt-2 text-neutral-600 dark:text-neutral-400">Full-day coverage, album design, private
+                            client gallery.</p>
+                        <div class="mt-4 font-bold text-brand">From ₹65,000</div>
+                        <a href="#contact"
+                            class="mt-6 inline-flex rounded-md bg-brand px-4 py-2 text-white hover:bg-brand/90">Check
+                            Dates</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="py-24">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-4xl font-bold text-center">Client <span class="text-brand">Words</span>
+                </h2>
+                <div class="mt-10 grid md:grid-cols-3 gap-6">
+                    <figure class="glass rounded-2xl p-6">
+                        <blockquote class="text-neutral-700 dark:text-neutral-300">“An eye for light and emotion—our
+                            photos feel timeless.”</blockquote>
+                        <figcaption class="mt-4 text-sm text-neutral-500">— Mira & Arjun</figcaption>
+                    </figure>
+                    <figure class="glass rounded-2xl p-6">
+                        <blockquote class="text-neutral-700 dark:text-neutral-300">“Seamless direction on set and
+                            editorial-grade results.”</blockquote>
+                        <figcaption class="mt-4 text-sm text-neutral-500">— Kinetic Studio</figcaption>
+                    </figure>
+                    <figure class="glass rounded-2xl p-6">
+                        <blockquote class="text-neutral-700 dark:text-neutral-300">“Professional, warm, and incredibly
+                            talented.”</blockquote>
+                        <figcaption class="mt-4 text-sm text-neutral-500">— Noor A.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG -->
+        <section id="blog" class="py-24 bg-neutral-50 dark:bg-neutral-900/50">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-4xl font-bold text-center">Latest <span class="text-brand">Stories</span>
+                </h2>
+                <div class="mt-10 grid md:grid-cols-3 gap-6">
+                    <article class="glass rounded-2xl overflow-hidden">
+                        <img src="images/kameron-kincade-CnVWM7rIM-E-unsplash.jpg" alt="Fashion editorial set"
+                            class="h-48 w-full object-cover" loading="lazy" />
+                        <div class="p-6">
+                            <h3 class="font-semibold">Behind the Editorial</h3>
+                            <p class="mt-2 text-neutral-600 dark:text-neutral-400">Lighting setups and mood boards from
+                                a recent brand shoot.</p>
+                            <a href="#" class="mt-4 inline-flex text-brand">Read more →</a>
+                        </div>
+                    </article>
+                    <article class="glass rounded-2xl overflow-hidden">
+                        <img src="images/marco-xu-ToUPBCO62Lw-unsplash.jpg" alt="Nature mist"
+                            class="h-48 w-full object-cover" loading="lazy" />
+                        <div class="p-6">
+                            <h3 class="font-semibold">Landscapes at Dawn</h3>
+                            <p class="mt-2 text-neutral-600 dark:text-neutral-400">Gear, timing, and locations for
+                                ethereal mornings.</p>
+                            <a href="#" class="mt-4 inline-flex text-brand">Read more →</a>
+                        </div>
+                    </article>
+                    <article class="glass rounded-2xl overflow-hidden">
+                        <img src="images/william-thomas-ny6tO4ItOEY-unsplash.jpg" alt="Portrait in shadow"
+                            class="h-48 w-full object-cover" loading="lazy" />
+                        <div class="p-6">
+                            <h3 class="font-semibold">Portraits in Shadow</h3>
+                            <p class="mt-2 text-neutral-600 dark:text-neutral-400">Working with contrast to reveal
+                                character.</p>
+                            <a href="#" class="mt-4 inline-flex text-brand">Read more →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-24">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="font-display text-6xl font-bold pt-[1rem] pb-[1rem]">Let’s <span class="text-brand">Create</span></h2>
+                        <p class="mt-4 text-xl text-neutral-600 dark:text-neutral-400">Share details about the project and
+                            desired dates.</p>
+                        <ul class="mt-6 space-y-2 text-neutral-700 dark:text-neutral-300 pt-[0.6rem] pb-[0.3    rem]">
+                            <li>• Email: hello@example.com</li>
+                            <li>• Studio: MG Road, Bengaluru</li>
+                            <li>• Hours: Mon–Sat, 10am–6pm</li>
+                        </ul>
+
+                        <div class="mt-10 glass rounded-2xl p-4">
+                            <h3 class="font-semibold">Client Access</h3>
+                            <p class="text-neutral-600 dark:text-neutral-400">Private galleries for selections and
+                                downloads.</p>
+                            <button id="clientAccessBtn"
+                                class="mt-3 inline-flex rounded-md border px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10">Open
+                                Client Login</button>
+                        </div>
+                    </div>
+
+                    <form class="glass rounded-3xl p-6 space-y-4"
+                        onsubmit="event.preventDefault(); alert('Thanks! Your message has been sent.'); this.reset();">
+                        <div>
+                            <label class="block text-sm font-medium">Name</label>
+                            <input type="text" required
+                                class="mt-1 w-full rounded-md border px-3 py-2 bg-white dark:bg-neutral-950 border-black/10 dark:border-white/10"
+                                placeholder="Full name" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Email</label>
+                            <input type="email" required
+                                class="mt-1 w-full rounded-md border px-3 py-2 bg-white dark:bg-neutral-950 border-black/10 dark:border-white/10"
+                                placeholder="name@example.com" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Message</label>
+                            <textarea rows="5" required
+                                class="mt-1 w-full rounded-md border px-3 py-2 bg-white dark:bg-neutral-950 border-black/10 dark:border-white/10"
+                                placeholder="Project details, dates, vision..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="inline-flex rounded-md bg-brand px-5 py-3 text-white hover:bg-brand/90">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-black/10 dark:border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 ">
+            <div class="grid md:grid-cols-4 gap-8 pb-[2rem]">
+                <div>
+                    <h4 class="font-display text-xl font-bold">The <span class="text-brand">Photography</span></h4>
+                    <p class="mt-3 text-neutral-600 dark:text-neutral-400">Crafting images that endure.</p>
+                    <div class="mt-4 flex gap-3">
+                        <a aria-label="Instagram" href="#"
+                            class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a6 6 0 100 12 6 6 0 000-12zm0 2.2a3.8 3.8 0 110 7.6 3.8 3.8 0 010-7.6zM18 6.5a1 1 0 11-2.001.001A1 1 0 0118 6.5z" />
+                            </svg>
+                        </a>
+                        <a aria-label="Twitter" href="#"
+                            class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19.633 7.997c.013.18.013.36.013.54 0 5.49-4.183 11.81-11.81 11.81-2.35 0-4.532-.683-6.37-1.86.33.038.645.051.988.051a8.36 8.36 0 005.18-1.782 4.178 4.178 0 01-3.9-2.896c.254.038.51.064.777.064.377 0 .754-.051 1.105-.141a4.17 4.17 0 01-3.344-4.096v-.051c.554.309 1.194.496 1.876.522a4.165 4.165 0 01-1.86-3.473c0-.777.206-1.495.567-2.12a11.85 11.85 0 008.602 4.372 4.7 4.7 0 01-.103-.957 4.17 4.17 0 014.17-4.17c1.2 0 2.285.496 3.046 1.3a8.23 8.23 0 002.646-1.005 4.16 4.16 0 01-1.833 2.298 8.308 8.308 0 002.4-.645 8.94 8.94 0 01-2.085 2.158z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div >
+                    <h5 class="font-semibold">About</h5>
+                    <ul class="mt-3 space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li><a href="#about" class="hover:text-brand">Photography</a></li>
+                        <li><a href="#gallery" class="hover:text-brand">Lens Database</a></li>
+                        <li><a href="#gallery" class="hover:text-brand">Lens Index</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-semibold">Reviews</h5>
+                    <ul class="mt-3 space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li><a href="#blog" class="hover:text-brand">Camera Reviews</a></li>
+                        <li><a href="#blog" class="hover:text-brand">Lens Reviews</a></li>
+                        <li><a href="#blog" class="hover:text-brand">Other Gear</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-semibold">Support</h5>
+                    <ul class="mt-3 space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li><a href="#contact" class="hover:text-brand">Contact</a></li>
+                        <li><a href="#contact" class="hover:text-brand">Workshops</a></li>
+                        <li><a href="#contact" class="hover:text-brand">Support Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-black/10 dark:border-white/10">
+                <p class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-center text-sm">
+                    © 2025 Sanjay C M • ETE • All rights reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="fixed inset-0 z- hidden place-items-center bg-black/80 p-4">
+        <div class="relative max-w-5xl w-full fade-in">
+            <button id="lightboxClose" class="absolute -top-10 right-0 p-2 text-white/80 hover:text-white"
+                aria-label="Close">
+                ✕
+            </button>
+            <img id="lightboxImg" src="" alt="Expanded view" class="w-full h-[70vh] object-contain rounded-lg" />
+            <div class="mt-3 flex justify-between">
+                <button id="prevBtn" class="rounded-md px-4 py-2 bg-white/10 text-white hover:bg-white/20">←
+                    Prev</button>
+                <button id="nextBtn" class="rounded-md px-4 py-2 bg-white/10 text-white hover:bg-white/20">Next
+                    →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIENT ACCESS MODAL -->
+    <div id="clientModal" class="fixed inset-0 z- hidden place-items-center bg-black/70 p-4">
+        <div class="glass rounded-2xl p-6 w-full max-w-sm fade-in">
+            <div class="flex justify-between items-start">
+                <h3 class="text-lg font-semibold">Client Login</h3>
+                <button id="clientClose" class="p-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10"
+                    aria-label="Close">✕</button>
+            </div>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Enter the access code to view the private
+                gallery.</p>
+            <input id="clientCode" type="password"
+                class="mt-4 w-full rounded-md border px-3 py-2 bg-white dark:bg-neutral-950 border-black/10 dark:border-white/10"
+                placeholder="Access code" />
+            <button id="clientSubmit"
+                class="mt-4 inline-flex rounded-md bg-brand px-4 py-2 text-white hover:bg-brand/90">Open</button>
+        </div>
+    </div>
+
+    <!-- SCROLL TO TOP -->
+    <button id="toTop"
+        class="fixed bottom-6 right-6 z-40 hidden rounded-full bg-brand p-3 text-white shadow-lg hover:bg-brand/90"
+        aria-label="Scroll to top">
+        ↑
+    </button>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Dark mode toggle (class-based)
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle?.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+        // Respect saved preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Filters
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('#masonry .masonry-item');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                filterButtons.forEach(b => b.classList.remove('bg-brand', 'text-white'));
+                btn.classList.add('bg-brand', 'text-white');
+                items.forEach(item => {
+                    const cat = item.getAttribute('data-category');
+                    item.style.display = (filter === 'all' || cat === filter) ? 'inline-block' : 'none';
+                });
+            });
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let gallery = [];
+        let currentIndex = 0;
+
+        function refreshVisibleGallery() {
+            gallery = Array.from(document.querySelectorAll('#masonry .masonry-item'))
+                .filter(el => el.style.display !== 'none')
+                .map(el => el.querySelector('img'));
+        }
+        refreshVisibleGallery();
+
+        items.forEach(item => {
+            const img = item.querySelector('img');
+            img.addEventListener('click', () => {
+                refreshVisibleGallery();
+                currentIndex = gallery.indexOf(img);
+                openLightbox(img.dataset.full || img.src);
+            });
+        });
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function showNext(delta) {
+            if (!gallery.length) return;
+            currentIndex = (currentIndex + delta + gallery.length) % gallery.length;
+            const img = gallery[currentIndex];
+            lightboxImg.src = img.dataset.full || img.src;
+        }
+
+        nextBtn.addEventListener('click', () => showNext(1));
+        prevBtn.addEventListener('click', () => showNext(-1));
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNext(1);
+            if (e.key === 'ArrowLeft') showNext(-1);
+        });
+
+        // Scroll to top button
+        const toTop = document.getElementById('toTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) toTop.classList.remove('hidden');
+            else toTop.classList.add('hidden');
+        });
+        toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Client modal
+        const clientModal = document.getElementById('clientModal');
+        const clientAccessBtn = document.getElementById('clientAccessBtn');
+        const clientClose = document.getElementById('clientClose');
+        const clientSubmit = document.getElementById('clientSubmit');
+        const clientCode = document.getElementById('clientCode');
+
+        clientAccessBtn?.addEventListener('click', () => clientModal.classList.remove('hidden'));
+        clientClose?.addEventListener('click', () => clientModal.classList.add('hidden'));
+        clientModal?.addEventListener('click', (e) => { if (e.target === clientModal) clientModal.classList.add('hidden'); });
+        clientSubmit?.addEventListener('click', () => {
+            if (!clientCode.value.trim()) return alert('Enter access code');
+            alert('This is a demo — integrate authentication or private gallery routing here.');
+            clientModal.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>
